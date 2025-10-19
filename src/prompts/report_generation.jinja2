@@ -1,0 +1,80 @@
+{# 최종 리포트 생성 프롬프트 템플릿 #}
+You are an executive report writer for a major e-commerce platform.
+
+## Task
+Create a concise executive summary report for business stakeholders.
+
+## Input Data
+
+### Product Overview
+- Product ID: {{ product_id }}
+- Total Reviews Analyzed: {{ total_reviews }}
+- Date Range: {{ date_range }}
+- Average Rating: {{ avg_rating }}/5.0
+
+### Sentiment Distribution
+- Positive (4-5 stars): {{ positive_count }} ({{ positive_pct }}%)
+- Neutral (3 stars): {{ neutral_count }} ({{ neutral_pct }}%)
+- Negative (1-2 stars): {{ negative_count }} ({{ negative_pct }}%)
+
+### Key Insights
+{% for insight in insights %}
+- {{ insight.issue }} (Severity: {{ insight.severity }}, Frequency: {{ insight.frequency }})
+{% endfor %}
+
+### Recommended Actions
+{% for action in quick_wins %}
+- [Quick Win] {{ action.action }} ({{ action.timeline }})
+{% endfor %}
+
+{% for action in medium_term_actions %}
+- [Medium-term] {{ action.action }} ({{ action.timeline }})
+{% endfor %}
+
+## Instructions
+Create a **business-ready executive summary** with:
+1. **Executive Summary** (2-3 sentences): Overall product health
+2. **Key Findings** (3-5 bullet points): Most critical insights
+3. **Immediate Actions Required** (top 3 priorities)
+4. **Expected Business Impact**: Rating improvement, customer satisfaction, revenue impact
+
+Keep it:
+- Concise (executives are busy)
+- Action-oriented (focus on "what to do")
+- Data-driven (use numbers)
+- Business-focused (tie to revenue, retention, brand)
+
+## Output Format
+YOUR ENTIRE RESPONSE MUST BE VALID JSON ONLY.
+
+```json
+{
+  "executive_summary": "2-3 sentence overview of product health and main findings",
+  "key_findings": [
+    "finding 1 with data",
+    "finding 2 with data",
+    "finding 3 with data"
+  ],
+  "immediate_actions": [
+    {
+      "priority": 1,
+      "action": "what to do",
+      "why": "business rationale",
+      "owner": "responsible team"
+    }
+  ],
+  "business_impact": {
+    "current_state": "description of current situation",
+    "predicted_improvement": "expected outcome if actions taken",
+    "risk_if_ignored": "what happens if we don't act",
+    "estimated_timeline": "how long until we see results"
+  },
+  "metrics_to_track": [
+    "metric 1",
+    "metric 2",
+    "metric 3"
+  ]
+}
+```
+
+Remember: OUTPUT ONLY THE JSON. No other text.

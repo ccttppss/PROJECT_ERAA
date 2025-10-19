@@ -1,0 +1,215 @@
+# Aspect-Based Sentiment Analysis (ABSA) Keywords
+# 전자제품 리뷰용 측면(aspect) 키워드 정의
+
+aspects:
+  # 배터리 관련
+  battery:
+    keywords:
+      - battery
+      - batteries
+      - charge
+      - charging
+      - charger
+      - power
+      - powered
+      - rechargeable
+      - battery life
+      - drain
+      - draining
+      - recharge
+    description: "Battery life, charging, and power-related issues"
+
+  # 품질 관련
+  quality:
+    keywords:
+      - quality
+      - build
+      - durability
+      - durable
+      - material
+      - construction
+      - well-made
+      - poorly made
+      - craftsmanship
+      - solid
+      - sturdy
+      - flimsy
+      - cheap
+      - premium
+    description: "Build quality, durability, and materials"
+
+  # 가격 관련
+  price:
+    keywords:
+      - price
+      - cost
+      - expensive
+      - cheap
+      - affordable
+      - value
+      - worth
+      - overpriced
+      - underpriced
+      - money
+      - dollar
+      - budget
+    description: "Price, value, and cost-effectiveness"
+
+  # 디자인 관련
+  design:
+    keywords:
+      - design
+      - look
+      - looks
+      - appearance
+      - aesthetic
+      - style
+      - stylish
+      - beautiful
+      - ugly
+      - sleek
+      - modern
+      - outdated
+      - color
+      - size
+      - compact
+    description: "Design, appearance, and aesthetics"
+
+  # 성능 관련
+  performance:
+    keywords:
+      - performance
+      - speed
+      - fast
+      - slow
+      - quick
+      - responsive
+      - lag
+      - freeze
+      - crash
+      - efficient
+      - powerful
+      - weak
+    description: "Speed, performance, and efficiency"
+
+  # 기능 관련
+  features:
+    keywords:
+      - feature
+      - features
+      - function
+      - functionality
+      - capability
+      - option
+      - options
+      - mode
+      - setting
+      - settings
+    description: "Features, functionality, and capabilities"
+
+  # 사용 편의성
+  usability:
+    keywords:
+      - easy
+      - difficult
+      - simple
+      - complicated
+      - user-friendly
+      - intuitive
+      - confusing
+      - convenient
+      - inconvenient
+      - comfortable
+      - ergonomic
+    description: "Ease of use and user experience"
+
+  # 소리/오디오
+  sound:
+    keywords:
+      - sound
+      - audio
+      - speaker
+      - speakers
+      - volume
+      - loud
+      - quiet
+      - noise
+      - noisy
+      - clear
+      - clarity
+      - bass
+      - treble
+    description: "Sound quality and audio"
+
+  # 화면/디스플레이
+  display:
+    keywords:
+      - screen
+      - display
+      - monitor
+      - resolution
+      - bright
+      - brightness
+      - dim
+      - sharp
+      - blurry
+      - vivid
+      - color
+      - touchscreen
+    description: "Screen and display quality"
+
+  # 고객 서비스
+  customer_service:
+    keywords:
+      - customer service
+      - support
+      - warranty
+      - return
+      - refund
+      - replacement
+      - customer support
+      - help
+      - response
+      - responsive
+    description: "Customer service and support"
+
+  # 배송
+  shipping:
+    keywords:
+      - shipping
+      - delivery
+      - ship
+      - delivered
+      - package
+      - packaging
+      - arrived
+      - damaged
+      - late
+      - on time
+    description: "Shipping and delivery"
+
+  # 내구성
+  durability:
+    keywords:
+      - last
+      - lasted
+      - break
+      - broke
+      - broken
+      - fail
+      - failed
+      - malfunction
+      - defect
+      - defective
+      - reliable
+      - unreliable
+    description: "Durability and reliability"
+
+# 설정
+config:
+  # 키워드 매칭 옵션
+  case_sensitive: false  # 대소문자 구분 안 함
+  whole_word: false      # 부분 매칭 허용 (e.g., "battery" matches "batteries")
+
+  # 최소 aspect 언급 수 (통계에 포함되려면)
+  min_mentions: 1

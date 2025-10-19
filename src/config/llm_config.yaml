@@ -1,0 +1,38 @@
+# LLM 설정 파일
+
+# 사용할 LLM 제공자 선택: ollama, claude, openai
+# 기본값: ollama (로컬, 무료, API 키 불필요!)
+provider: ollama
+
+# Ollama 설정 (로컬 오픈소스 LLM - 추천!)
+ollama:
+  model: gpt-oss:20b  # OpenAI 오픈소스 MoE 모델 (21B, 3.6B active)
+  # 대안: mistral, llama3.1, qwen2.5:7b, phi3, gemma2:9b
+  base_url: http://localhost:11434
+  max_tokens: 2000
+  temperature: 0.7
+  timeout: 3600  # 1시간 (대량 리뷰 처리 대비)
+
+# Claude 설정 (Anthropic API)
+claude:
+  api_key: ${ANTHROPIC_API_KEY}  # 환경변수에서 로드
+  model: claude-sonnet-4-20250514
+  max_tokens: 2000
+  temperature: 0.7
+
+# OpenAI 설정 (GPT API)
+openai:
+  api_key: ${OPENAI_API_KEY}  # 환경변수에서 로드
+  model: gpt-4
+  max_tokens: 2000
+  temperature: 0.7
+
+# 하이브리드 전략 (선택사항 - 필요 없으면 무시하세요!)
+# 모든 작업을 Ollama로 할 수 있습니다.
+# 만약 비용을 들이더라도 최종 요약만 고품질로 하고 싶다면:
+# - analysis: ollama (무료)
+# - summary: claude (유료, API 키 필요)
+hybrid:
+  enabled: false  # false = Ollama만 사용 (기본값)
+  analysis: ollama
+  summary: ollama  # claude로 변경 시 API 키 필요
