@@ -3,7 +3,8 @@
 [![Python 3.9+](https://img.shields.io/badge/python-3.9+-blue.svg)](https://www.python.org/downloads/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-Multi-Agent AI 시스템으로 Amazon 리뷰를 자동 분석하여 **실행 가능한 비즈니스 인사이트**와 **구체적인 개선 계획**을 도출합니다.
+LLM 기반 Multi-Agent AI 시스템으로 데이터 입력부터 최종 실행 계획 수립까지의 전 과정을 자동화하는 아키텍처를 구현합니다.
+이를 검증하기 위해, 제조 현장보다 데이터의 노이즈가 심하고 비정형성이 높은 이커머스 고객 리뷰(Amazon 리뷰)를 자동 분석하여 **실행 가능한 비즈니스 인사이트**와 **구체적인 개선 계획**을 도출하는 시스템을 구축했습니다.
 
 > ⚠️ **데이터셋 다운로드 필요**: 이 저장소는 대용량 데이터셋 파일을 포함하지 않습니다. 아래 [데이터셋 준비](#-데이터셋-준비) 섹션을 참조하세요.
 
