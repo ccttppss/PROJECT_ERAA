@@ -3,7 +3,7 @@
 [![Python 3.9+](https://img.shields.io/badge/python-3.9+-blue.svg)](https://www.python.org/downloads/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-**규칙 기반(Rule-based) 연산**과 **단일 LLM의 추론(Reasoning)**을 결합한 **하이브리드 순차적 프롬프트 체인(Hybrid Sequential Prompt Chain)** 아키텍처입니다.
+**규칙 기반(Rule-based) 연산**과 **단일 LLM의 추론(Reasoning)** 을 결합한 **하이브리드 순차적 프롬프트 체인(Hybrid Sequential Prompt Chain)** 아키텍처입니다.
 
 Python 라이브러리를 활용해 정밀한 통계와 감성 분석(ABSA)을 수행하고, 그 결과를 바탕으로 단일 LLM이 전체 맥락(Context)을 유지하며 **심층 분석 → 전략 수립 → 보고서 작성**의 과정을 수행합니다. 이를 통해 **할루시네이션(Hallucination)을 방지**하고 **비용 효율성**을 극대화했습니다.
 
@@ -126,7 +126,7 @@ output/
 
 ### Hybrid Sequential Chain 구조
 
-중앙 **Orchestrator**가 데이터 흐름을 제어하며, **Python 모듈(정량 분석)**과 **단일 LLM(정성 분석)**을 순차적으로 호출하여 분석을 완성합니다.
+중앙 **Orchestrator**가 데이터 흐름을 제어하며, **Python 모듈(정량 분석)** 과 **단일 LLM(정성 분석)** 을 순차적으로 호출하여 분석을 완성합니다.
 
 ```
 ┌─────────────────────────────────────────────┐
@@ -228,7 +228,7 @@ print(f"Actions: {len(result['action_plan']['quick_wins'])} generated")
 
 - **Python 3.9+**
 - **pandas**: 데이터 전처리 및 정량 분석
-- **Jinja2**: 프롬프트 템플릿 관리
+- **jinja2**: 프롬프트 템플릿 관리
 - **Ollama**: 로컬 LLM (gpt-oss:20b 등) 추론 엔진
 - **Matplotlib/Seaborn**: 데이터 시각화
 
