@@ -76,9 +76,9 @@ class OllamaLLMProvider(LLMProvider):
         )
 
     @retry_on_error(
-        max_retries=3,
-        delay=1.0,
-        backoff=2.0,
+        max_retries=5,
+        delay=2.0,
+        backoff=2.5,
         exceptions=(requests.exceptions.RequestException, LLMAPIError)
     )
     def generate(
@@ -131,7 +131,11 @@ class OllamaLLMProvider(LLMProvider):
             response.raise_for_status()
 
             result = response.json()
+            # Thinking Model 지원: response가 비어있으면 thinking 필드 사용
             generated_text = result.get("response", "")
+            if not generated_text and result.get("thinking"):
+                generated_text = result.get("thinking", "")
+                logger.debug("Using 'thinking' field instead of 'response' (Thinking Model)")
 
             if not self.validate_response(generated_text):
                 raise LLMAPIError("Empty response from Ollama")
