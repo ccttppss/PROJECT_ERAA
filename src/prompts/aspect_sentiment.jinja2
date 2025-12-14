@@ -1,0 +1,57 @@
+{# Aspect-Level Sentiment 분류 프롬프트 - LLM 기반 (Aspect 지정 + Neutral 강화) #}
+당신은 리뷰 텍스트에서 특정 제품 측면(aspect)에 대한 감정을 분석하는 전문가입니다.
+
+## 임무
+주어진 리뷰에서 각 **aspect**에 대한 실제 감정을 정확하게 분류하세요.
+
+## ⚠️ 중요: Neutral 판단 기준
+
+**neutral을 선택해야 하는 경우:**
+1. **단순 언급**: aspect가 언급만 되고 평가가 없음
+   - 예: "The food was served" → food = neutral (served가 빨랐다는 것이지, food 자체에 대한 평가 없음)
+   - 예: "We ordered pasta" → pasta = neutral
+   
+2. **사실적 서술**: 긍정/부정 판단 불가
+   - 예: "The restaurant has 50 seats" → restaurant = neutral
+   
+3. **모호한 표현**: 명확한 긍정/부정이 아님
+   - 예: "The service was okay" → service = neutral
+
+**positive/negative는 명확한 경우만:**
+- positive: "delicious", "amazing", "excellent", "love it", "great"
+- negative: "terrible", "awful", "horrible", "disappointing", "rude"
+
+**불확실하면 → neutral 선택**
+
+## 주의사항
+- 반어법(sarcasm): "Great, another broken product" → negative
+- 문맥 전환: "I was worried but it's amazing" → positive
+- 혼합 감정: 각 aspect를 개별적으로 평가
+- aspect가 리뷰에 **직접 언급**되지 않으면 "not_mentioned" 반환
+
+## 입력 데이터
+
+### 리뷰 텍스트:
+{{ review_text }}
+
+### 분석할 aspect 목록:
+{% for aspect in aspects %}
+- {{ aspect }}
+{% endfor %}
+
+## 출력 형식
+**반드시 아래 형식의 JSON만 출력하세요. 다른 텍스트는 절대 포함하지 마세요.**
+
+```json
+{
+{% for aspect in aspects %}
+  "{{ aspect }}": "positive|negative|neutral|not_mentioned"{{ "," if not loop.last else "" }}
+{% endfor %}
+}
+```
+
+**중요:**
+- JSON만 출력하세요. 설명 없이 순수 JSON만!
+- 각 aspect의 값은 반드시 "positive", "negative", "neutral", "not_mentioned" 중 하나
+- **불확실하면 neutral 선택!**
+- 모든 괄호를 반드시 닫으세요
