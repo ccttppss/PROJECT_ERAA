@@ -52,7 +52,7 @@ class ReviewAnalysisOrchestrator:
 
         # Phase 1 에이전트
         self.data_agent = DataCollectionAgent(config)
-        self.sentiment_agent = SentimentAnalysisAgent(config)
+        self.sentiment_agent = SentimentAnalysisAgent(config, self.llm_service)  # Phase 2.5: LLM 연동
 
         # Phase 2 에이전트 (LLM 기반)
         self.insight_agent = InsightExtractionAgent(config, self.llm_service)
